@@ -1,0 +1,33 @@
+version: "2"
+
+services:
+  backend:
+    build: ./
+    container_name: ecargo_container
+    working_dir: /eCargo
+    command:
+      - ./commands/start_${MODE}_serv.sh
+    ports:
+      - 8008:8000
+    volumes:
+      - static_content:/eCargo/src/static
+      - media_content:/eCargo/src/media
+      - ./src:/eCargo/src
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:12
+    ports:
+      - 5432:5432
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+volumes:
+  static_content: { }
+  media_content: { }
+  pg_data: { }

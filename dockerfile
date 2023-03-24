@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.10-slim
 
 RUN apt update \
 && mkdir /eCargo
@@ -6,7 +6,7 @@ RUN apt update \
 WORKDIR /eCargo
 
 COPY src ./src
-
+COPY commands ./commands
 COPY requirements.txt ./requirements.txt
 
 RUN python -m pip install --upgrade pip \
@@ -14,7 +14,4 @@ RUN python -m pip install --upgrade pip \
 
 EXPOSE 8008
 
-CMD ["python", "src/manage.py", "runserver", "0:8000"]
-
-#docker build -t ecargo .
-#docker run --rm -it -d -p 8008:8000 --name ecargo_kont ecargo
+CMD ["bash"]
