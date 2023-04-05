@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<h1 style="font-size: 24px; font-family: Arial, sans-serif;">eCargo</h1>
+  <head>
+    <title>eCargo</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        display: flex;
+        height: 100vh;
+      }
+      .left {
+        flex: 1;
+        background-image: url({% static  './media/cargo.jpg' %});
+        background-repeat: no-repeat;
+        background-position: center left;
+        background-size: contain;
+        text-align: center;
+      }
+      .left a {
+        display: block;
+        height: 100%;
+      }
+      .right {
+        flex: 1;
+        background-image: url({% static './media/Transport.jpg' %});
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center right;
+        text-align: center;
+      }
+      .right a {
+        display: block;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <a href="left-page.html"></a>
+      </div>
+      <div class="right">
+        <a href="right-page.html"></a>
+      </div>
+    </div>
+  </body>
+</html>
