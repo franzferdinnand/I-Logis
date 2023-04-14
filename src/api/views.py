@@ -23,6 +23,7 @@ class CargoListView(ListAPIView):
 
 
 class CargoDetailView(RetrieveAPIView):
+    queryset = Cargo.objects.all()
     permission_classes = [AllowAny]
     serializer_class = CargoSerializer
 
