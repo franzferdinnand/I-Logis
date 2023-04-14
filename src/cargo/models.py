@@ -14,4 +14,4 @@ class Cargo(models.Model):
         return super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.cargo_type}_{self.weight_kg}kg"
+        return f"{self.pk}_{self.cargo_type}_{self.weight_kg}kg"

@@ -1,17 +1,29 @@
 from account.models import UserAccount
 from cargo.models import Cargo
+from transport.models import Transport
 
 
 def sample_cargo(user, **kwargs):
     default = {
         "cargo_type": "bullets",
-        "weight_kg": "3000",
+        "weight_kg": 3000,
         "destination_from": "Warsaw",
         "destination_to": "Kyiv",
         "owner": user,
     }
     default.update(kwargs)
     return Cargo.objects.create(**default)
+
+
+def sample_transport(user, **kwargs):
+    default = {
+        "car_name": "bullets",
+        "car_model": "3000",
+        "max_weight": 3000,
+        "owner": user,
+    }
+    default.update(kwargs)
+    return Transport.objects.create(**default)
 
 
 def sample_user_account(**kwargs):
