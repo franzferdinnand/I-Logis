@@ -59,6 +59,7 @@ class TransportListView(ListAPIView):
 
 
 class TransportDetailView(RetrieveAPIView):
+    queryset = Transport.objects.all()
     serializer_class = TransportSerializer
 
     def get_object(self):
