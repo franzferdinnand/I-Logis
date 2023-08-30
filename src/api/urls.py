@@ -7,6 +7,7 @@ from api.views import (CargoCreateView, CargoDeleteView, CargoDetailView,
                        CargoListView, CargoUpdateView, TransportCreateView,
                        TransportDeleteView, TransportDetailView,
                        TransportListView, TransportUpdateView, UserViewSet)
+from core.views import UserProfileView
 
 app_name = "api"
 router = routers.DefaultRouter()
@@ -38,4 +39,5 @@ urlpatterns = [
     path("create-cargo/", CargoCreateView.as_view(), name="create_cargo"),
     path("update-cargo/<int:id>/", CargoUpdateView.as_view(), name="update_cargo"),
     path("delete-cargo/<int:id>/", CargoDeleteView.as_view(), name="delete_cargo"),
+    path("profile/<int:pk>", UserProfileView.as_view(), name="user_profile")
 ]

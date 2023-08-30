@@ -9,15 +9,13 @@ from account.managers import CustomerManager
 
 
 class UserAccount(AbstractBaseUser, PermissionsMixin):
-    class USER_TYPES(models.IntegerChoices):
-        DRIVER = 1, "Driver"
-        CARGO_OWNER = 2, "Cargo Owner"
-
     phone_number = PhoneNumberField(_("phone number"), max_length=16, blank=False)
     first_name = models.CharField(_("name"), max_length=150)
     last_name = models.CharField(_("surname"), max_length=150)
     email = models.EmailField(_("email address"), max_length=100, unique=True)
-    user_type = models.PositiveSmallIntegerField(choices=USER_TYPES.choices, null=True)
+    city = models.CharField(max_length=120, blank=True)
+    avatar = models.ImageField(default="default.png", upload_to="media/avatars")
+    birth_date = models.DateField(null=True)
     is_staff = models.BooleanField(
         _("staff status"),
         default=False,
@@ -59,15 +57,15 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         return f"{self.phone_number}_{self.first_name}_{self.last_name}"
 
 
-class UserDriverProfile(models.Model):
-    user = models.OneToOneField(to=get_user_model(), on_delete=models.CASCADE, related_name="driver_profile")
-    city = models.CharField(max_length=120, blank=True)
-    avatar = models.ImageField(default="default.png", upload_to="media/avatars")
-    birth_date = models.DateField(null=True)
-
-
-class UserCargoProfile(models.Model):
-    user = models.OneToOneField(to=get_user_model(), on_delete=models.CASCADE, related_name="cargo_profile")
-    city = models.CharField(max_length=120, blank=True)
-    avatar = models.ImageField(default="default.png", upload_to="media/avatars")
-    birth_date = models.DateField(null=True)
+# class UserDriverProfile(models.Model):
+#     user = models.OneToOneField(to=get_user_model(), on_delete=models.CASCADE, related_name="driver_profile")
+#     city = models.CharField(max_length=120, blank=True)
+#     avatar = models.ImageField(default="default.png", upload_to="media/avatars")
+#     birth_date = models.DateField(null=True)
+#
+#
+# class UserCargoProfile(models.Model):
+#     user = models.OneToOneField(to=get_user_model(), on_delete=models.CASCADE, related_name="cargo_profile")
+#     city = models.CharField(max_length=120, blank=True)
+#     avatar = models.ImageField(default="default.png", upload_to="media/avatars")
+#     birth_date = models.DateField(null=True)
