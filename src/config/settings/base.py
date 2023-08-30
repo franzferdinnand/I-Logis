@@ -35,8 +35,8 @@ INSTALLED_APPS = [
     "account",
     "core",
     "cargo",
-    "api",
     "transport",
+    "api",
 ]
 
 MIDDLEWARE = [
@@ -124,5 +124,5 @@ DJOSER = {
     "USER_CREATE_PASSWORD_RETYPE": True,
     "PASSWORD_RESET_CONFIRM_RETYPE": True,
     "PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND": True,
-    "PASSWORD_RESET_CONFIRM_URL": "auth/password-reset/{uid}/{token}",
+    "PASSWORD_RESET_CONFIRM_URL": "auth/password-reset/{id}/{token}",
 }

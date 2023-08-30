@@ -6,7 +6,7 @@ from transport.models import Transport
 def sample_cargo(user, **kwargs):
     default = {
         "cargo_type": "bullets",
-        "weight_kg": "3000",
+        "weight_kg": 3000,
         "destination_from": "Warsaw",
         "destination_to": "Kyiv",
         "owner": user,
@@ -19,7 +19,7 @@ def sample_transport(user, **kwargs):
     default = {
         "car_name": "bullets",
         "car_model": "3000",
-        "max_weight": "Warsaw",
+        "max_weight": 3000,
         "owner": user,
     }
     default.update(kwargs)
