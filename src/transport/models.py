@@ -9,4 +9,4 @@ class Transport(models.Model):
     owner = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE, related_name="transports")
 
     def __str__(self):
-        return f"{self.car_name}_{self.car_model}"
+        return f"{self.pk}_{self.car_name}_{self.car_model}"

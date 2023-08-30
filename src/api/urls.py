@@ -1,15 +1,37 @@
-from django.urls import path
+from django.urls import include, path
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions, routers
 
-from api.views import (CargoCreateView, CargoDeleteView, CargoListView,
-                       CargoUpdateView, TransportCreateView,
-                       TransportDeleteView, TransportListView,
-                       TransportUpdateView)
+from api.views import (CargoCreateView, CargoDeleteView, CargoDetailView,
+                       CargoListView, CargoUpdateView, TransportCreateView,
+                       TransportDeleteView, TransportDetailView,
+                       TransportListView, TransportUpdateView, UserViewSet)
 
 app_name = "api"
+router = routers.DefaultRouter()
+router.register("customers", UserViewSet)
 
+schema_view = get_schema_view(
+    openapi.Info(
+        title="eCargo API",
+        default_version="v1.0",
+        description="API for using of cargo or drivers info",
+        term_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="admin@admin.com"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny],
+)
 urlpatterns = [
+    path("", include(router.urls)),
+    path("auth/", include("djoser.urls.jwt")),
+    path("docs/", schema_view.with_ui("redoc", cache_timeout=0), name="swagger_docs"),
     path("cargos/", CargoListView.as_view(), name="cargos"),
+    path("cargo-detail/<int:pk>/", CargoDetailView.as_view(), name="cargo-detail"),
     path("transports/", TransportListView.as_view(), name="transports"),
+    path("transport-detail/<int:id>/", TransportDetailView.as_view(), name="transport-detail"),
     path("create-transport/", TransportCreateView.as_view(), name="create_transport"),
     path("update-transport/<int:id>/", TransportUpdateView.as_view(), name="update_transport"),
     path("delete-transport/<int:id>/", TransportDeleteView.as_view(), name="delete_transport"),

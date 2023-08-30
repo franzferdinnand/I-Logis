@@ -1,9 +1,18 @@
+from django.contrib.auth import get_user_model
 from rest_framework.generics import (CreateAPIView, DestroyAPIView,
-                                     ListAPIView, RetrieveUpdateAPIView)
+                                     ListAPIView, RetrieveAPIView,
+                                     RetrieveUpdateAPIView)
+from rest_framework.viewsets import ModelViewSet
 
-from api.serializers import CargoSerializer, TransportSerializer
+from api.serializers import (CargoSerializer, TransportSerializer,
+                             UserSerializer)
 from cargo.models import Cargo
 from transport.models import Transport
+
+
+class UserViewSet(ModelViewSet):
+    queryset = get_user_model().objects.all()
+    serializer_class = UserSerializer
 
 
 class CargoListView(ListAPIView):
@@ -11,9 +20,23 @@ class CargoListView(ListAPIView):
     serializer_class = CargoSerializer
 
 
+class CargoDetailView(RetrieveAPIView):
+    serializer_class = CargoSerializer
+
+    def get_object(self):
+        return Cargo.objects.get(pk=self.kwargs.get("pk"))
+
+
 class TransportListView(ListAPIView):
     queryset = Transport.objects.all()
     serializer_class = TransportSerializer
+
+
+class TransportDetailView(RetrieveAPIView):
+    serializer_class = TransportSerializer
+
+    def get_object(self):
+        return Transport.objects.get(pk=self.kwargs.get("pk"))
 
 
 class TransportCreateView(CreateAPIView):
