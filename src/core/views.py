@@ -4,7 +4,7 @@ from django.views.generic import TemplateView, DetailView
 
 
 class IndexView(TemplateView):
-    template_name = "index_mutated.html"
+    template_name = "index.html"
     http_method_names = ["get"]
 
 
