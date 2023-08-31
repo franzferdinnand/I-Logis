@@ -37,7 +37,7 @@ jsonschema==3.2.0
 MarkupSafe==2.1.2
 mccabe==0.7.0
 mypy-extensions==1.0.0
-numpy==1.25.2
+numpy==1.24.1
 oauthlib==3.2.2
 packaging==23.0
 pandas==2.1.0
