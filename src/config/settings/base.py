@@ -34,9 +34,12 @@ INSTALLED_APPS = [
     "drf_yasg",
     "account",
     "core",
+    "config",
     "cargo",
     "transport",
     "api",
+    "crispy_forms",
+    "crispy_bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -126,3 +129,5 @@ DJOSER = {
     "PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND": True,
     "PASSWORD_RESET_CONFIRM_URL": "auth/password-reset/{id}/{token}",
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
