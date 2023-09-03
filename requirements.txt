@@ -72,7 +72,7 @@ ruamel.yaml==0.17.21
 ruamel.yaml.clib==0.2.7
 six==1.16.0
 soupsieve==2.4.1
-social-auth-app-django==5.0.0
+social-auth-app-django
 sqlparse==0.4.3
 texttable==1.6.7
 tomli==2.0.1
