@@ -6,7 +6,7 @@ app_name = "core"
 
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("api/", include("api.urls")),
-    path("", include("core.urls")),
+    path(r"admin/", admin.site.urls),
+    path(r"api/", include("api.urls")),
+    path(r"", include("core.urls")),
 ]
