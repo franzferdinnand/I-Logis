@@ -45,10 +45,10 @@ MarkupSafe==2.1.2
 mccabe==0.7.0
 mongoengine==0.27.0
 mypy-extensions==1.0.0
-numpy==1.25.2
+numpy==1.24.4
 oauthlib==3.2.2
 packaging==23.0
-pandas==2.1.0
+pandas==2.0.0
 paramiko==3.1.0
 pathspec==0.11.0
 phonenumbers==8.13.7
