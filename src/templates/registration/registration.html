@@ -10,7 +10,9 @@
     <br>
     <button type="submit" value="Submit" class="btn btn-success">Register</button><br>
     <br><br>
-    <a  type="button" class="btn btn-outline-dark" href="*"><img src="{% static 'media/google.png' %}" width="30" height="30">       Login via Google</a></li>
+    <a  type="button" class="btn btn-outline-dark" href='{% url "social:begin" "google-oauth2" %}'><img src="{% static 'media/google.png' %}" width="30" height="30">       Login via Google</a></li><br>
+<!--    <a  type="button" class="btn btn-outline-dark" href="{% url 'social:begin' 'github' %}"><img src="{% static 'media/github.png' %}" width="30" height="30">       Login via GitHub</a></li><br>-->
+<!--    <a  type="button" class="btn btn-outline-dark" href="{% url 'social:begin' 'linkedin-oauth2' %}"><img src="{% static 'media/linkedin.png' %}" width="30" height="30">       Login via GitHub</a></li><br>-->
     <br><br>
 </form>
 {% endblock %}

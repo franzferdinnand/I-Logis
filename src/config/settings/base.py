@@ -10,9 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 from datetime import timedelta
-
+import os
 import django
-from decouple import config
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 from django.utils.encoding import force_str
 django.utils.encoding.force_text = force_str
@@ -22,8 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
-
+load_dotenv(find_dotenv())
 # Application definition
 
 
@@ -37,6 +36,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "django_css_inline",
     "phonenumber_field",
+    "social_django",
     "rest_framework",
     "drf_yasg",
     "account",
@@ -58,6 +58,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "social_django.middleware.SocialAuthExceptionMiddleware",
 
 ]
 
@@ -66,6 +67,15 @@ MIDDLEWARE = [
 ROOT_URLCONF = "config.urls"
 
 AUTH_USER_MODEL = "account.UserAccount"
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    "django.contrib.auth.backends.ModelBackend",
+    "core.auth_backend.AuthBackend",
+)
+
+
+SOCIAL_AUTH_URL_NAMESPACE = "social"
 
 
 TEMPLATES = [
@@ -79,6 +89,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
 
             ],
         },
@@ -152,9 +164,11 @@ EMAIL_FAIL_SILENTLY = False
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
-# EMAIL_HOST = config("EMAIL_HOST")
-# EMAIL_HOST_USER = config("EMAIL_USER")
-# EMAIL_HOST_PASSWORD = config("EMAIL_PASSWORD")
-# DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_HOST_USER = os.getenv("EMAIL_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
 EMAIL_PORT = 587
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv("GOOGLE_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv("GOOGLE_SECRET")
