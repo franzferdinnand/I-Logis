@@ -10,7 +10,7 @@
     <br>
     <button type="submit" value="Login" class="btn btn-success">Login</button><br>
     <br>
-    <a  type="button" class="btn btn-outline-dark" href="*"><img src="{% static 'media/google.png' %}" width="30" height="30">       Login via Google</a></li>
+    <a  type="button" class="btn btn-outline-dark" href='{% url "social:begin" "google-oauth2" %}'><img src="{% static 'media/google.png' %}" width="30" height="30">       Login via Google</a></li>
     <br><br>
 </form>
 {% endblock %}
