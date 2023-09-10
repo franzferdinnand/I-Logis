@@ -9,12 +9,14 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-from datetime import timedelta
 import os
-import django
-from dotenv import load_dotenv, find_dotenv
+from datetime import timedelta
 from pathlib import Path
+
+import django
 from django.utils.encoding import force_str
+from dotenv import find_dotenv, load_dotenv
+
 django.utils.encoding.force_text = force_str
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -59,9 +61,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "social_django.middleware.SocialAuthExceptionMiddleware",
-
 ]
-
 
 
 ROOT_URLCONF = "config.urls"
@@ -69,7 +69,7 @@ ROOT_URLCONF = "config.urls"
 AUTH_USER_MODEL = "account.UserAccount"
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOAuth2',
+    "social_core.backends.google.GoogleOAuth2",
     "django.contrib.auth.backends.ModelBackend",
     "core.auth_backend.AuthBackend",
 )
@@ -91,7 +91,6 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "social_django.context_processors.backends",
                 "social_django.context_processors.login_redirect",
-
             ],
         },
     },
@@ -158,7 +157,7 @@ DJOSER = {
     "PASSWORD_RESET_CONFIRM_URL": "auth/password-reset/{id}/{token}",
 }
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 EMAIL_FAIL_SILENTLY = False
 

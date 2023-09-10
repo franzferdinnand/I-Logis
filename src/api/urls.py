@@ -39,5 +39,5 @@ urlpatterns = [
     path("create-cargo/", CargoCreateView.as_view(), name="create_cargo"),
     path("update-cargo/<int:id>/", CargoUpdateView.as_view(), name="update_cargo"),
     path("delete-cargo/<int:id>/", CargoDeleteView.as_view(), name="delete_cargo"),
-    path("profile/<int:pk>", UserProfileView.as_view(), name="user_profile")
+    path("profile/<int:pk>", UserProfileView.as_view(), name="user_profile"),
 ]

@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.10
 
 RUN apt update \
 && mkdir /eCargo
@@ -11,7 +11,5 @@ COPY requirements.txt ./requirements.txt
 
 RUN python -m pip install --upgrade pip \
 && pip install -r ./requirements.txt
-
-EXPOSE 8008
 
 CMD ["bash"]
