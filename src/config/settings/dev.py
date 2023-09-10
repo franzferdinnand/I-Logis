@@ -8,9 +8,6 @@ ALLOWED_HOSTS = []
 
 STATIC_URL = "static/"
 
-import os
-
-import mongoengine
 
 from config.settings.base import *  # noqa
 

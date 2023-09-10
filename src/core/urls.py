@@ -3,7 +3,8 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path
 
-from account.views import UserRegistrationView, UserLoginView, UserLogoutView, ActivateUser
+from account.views import (ActivateUser, UserLoginView, UserLogoutView,
+                           UserRegistrationView)
 from core.views import IndexView
 
 app_name = "core"
