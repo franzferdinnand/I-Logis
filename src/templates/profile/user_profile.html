@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% load static %}
+<h1>
+    <th>{{ object.user }}</th>
+</h1>
+
+<div>
+    {% if user.avatar %}
+        <img class='avatar' src="{{ user.avatar.url }}" width="250" height="250" style="float: top">
+    {% else %}
+        <img class='avatar' src="avatars/default.png" width="250" height="250" style="float: top">
+    {% endif %}
+    <hr>
+</div>
+<div class="text">
+    {% if user.first_name %}
+       User: {{ user.first_name }} {{ user.last_name }}<br>
+    {% else %}
+       User: {{ user.username }}<br>
+    {% endif %}
+       Birth Date: {{ object.birth_date }}<br>
+       Email: {{ object.email }}<br>
+       Phone: {{ user.phone_number }}<br>
+    <br>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    {{ form.media }}
+    {{ form }}
+</div>
+
+
+{% endblock %}

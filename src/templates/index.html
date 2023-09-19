@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.115.4">
-    <title>Product example · Bootstrap v5.3</title>
+    <title>eCargo</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/product/">
 
@@ -89,6 +89,16 @@
         .bd-mode-toggle {
           z-index: 1500;
         }
+        .avatar {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+        .text {
+            text-align: center;
+
+        }
     </style>
 
 
@@ -154,12 +164,12 @@
                     </a></li>
                     {% if user.is_authenticated %}
                     {% if user.first_name or user.last_name %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'api:user_profile' user.pk %}">| {{ user.first_name | title }} {{ user.last_name | title }} |</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'core:user_profile' user.pk %}">| {{ user.first_name | title }} {{ user.last_name | title }} |</a></li>
                     {% else %}
                     <li class="nav-item"><a class="nav-link" href="#">| {{ user.username | title }} |</a></li>
                     {% endif %}
-                    <li class="nav-item"><a class="nav-link" href="#">Cargo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Transport</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'cargo:cargos' %}">Cargo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'transport:transports' %}">Transport</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Reset Password</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'core:logout' %}">Logout</a></li>
@@ -182,22 +192,24 @@
     {% block content %}
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
         <div class="col-md-6 p-lg-5 mx-auto my-5">
-            <h1 class="display-3 fw-bold">Welcome to eCargo</h1>
-            <h3 class="fw-normal text-muted mb-3">Search for transport if you have cargo or search for cargo if you have
-                transport</h3>
-            <div class="d-flex gap-3 justify-content-center lead fw-normal">
-                <a class="icon-link" href="#">
-                    I have transport
-                    <svg class="bi">
-                        <use xlink:href="#chevron-right"/>
-                    </svg>
-                </a>
-                <a class="icon-link" href="#">
-                    I have cargo
-                    <svg class="bi">
-                        <use xlink:href="#chevron-right"/>
-                    </svg>
-                </a>
+            <div class="back-img-1">
+                <h1 class="display-3 fw-bold">Welcome to eCargo</h1>
+                <h3 class="fw-normal text-muted mb-3">Search for transport if you have cargo or search for cargo if you have
+                    transport</h3>
+                <div class="d-flex gap-3 justify-content-center lead fw-normal">
+                    <a class="icon-link" href="#">
+                        I have transport
+                        <svg class="bi">
+                            <use xlink:href="#chevron-right"/>
+                        </svg>
+                    </a>
+                    <a class="icon-link" href="{% url 'cargo:create_cargos' %}">
+                        I have cargo
+                        <svg class="bi">
+                            <use xlink:href="#chevron-right"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="product-device shadow-sm d-none d-md-block"></div>

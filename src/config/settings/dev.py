@@ -4,18 +4,8 @@ DEBUG = True
 
 SECRET_KEY = "django-insecure-!zi6yb5w0%s_hx()f^3@-%$w!p9-+5!gr03&an*i(x(niu8lwr"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
-STATIC_URL = "static/"
-
-
-from config.settings.base import *  # noqa
-
-DEBUG = True
-
-SECRET_KEY = "django-secret-key"
-
-ALLOWED_HOSTS = []
 
 # mongoengine.connect(host="mongodb://admin:admin@mongodb:27017/mongodb_content?authSource=admin")
 
@@ -54,18 +44,3 @@ else:
         },
     }
 
-# "default": {
-#             "ENGINE": "django.db.backends.postgresql",
-#             "NAME": os.environ.get("POSTGRES_DB"),
-#             "USER": os.environ.get("POSTGRES_USER"),
-#             "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-#             "HOST": os.environ.get("POSTGRES_HOST"),
-#             "PORT": os.environ.get("POSTGRES_PORT"),
-
-# "default": {
-#     "ENGINE": "django.db.backends.postgresql",
-#     "NAME": "ecargo",
-#     "USER": "postgres",
-#     "PASSWORD": "admin",
-#     "HOST": "localhost",
-#     "PORT": 5432,

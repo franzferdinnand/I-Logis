@@ -11,10 +11,10 @@ services:
     ports:
       - 8010:8000
     volumes:
-      - static_content:/eCargo/src/static
-      - media_content:/eCargo/src/media
       - ./src:/eCargo/src
       - ./commands:/commands
+      - static_content:/eCargo/static
+      - media_content:/eCargo/static/media
     env_file:
       - .env
     depends_on:
@@ -39,6 +39,22 @@ services:
       - 5000:80
     volumes:
       - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - backend
+
+
+  nginx:
+    container_name: nginx_container
+    image: nginx:1.19
+    volumes:
+      - static_content:/eCargo/static
+      - media_content:/eCargo/static/media
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - 80:80
+      - 443:443
+    env_file:
+      - .env
     depends_on:
       - backend
 

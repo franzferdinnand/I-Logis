@@ -132,8 +132,12 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR.parent / "static/"
 STATICFILES_DIRS = (BASE_DIR / "static",)
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR.parent / "media/"
 
 LOGIN_REDIRECT_URL = "core:index"
 LOGOUT_REDIRECT_URL = "core:login"
