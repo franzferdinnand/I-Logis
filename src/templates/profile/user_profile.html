@@ -20,9 +20,18 @@
     {% else %}
        User: {{ user.username }}<br>
     {% endif %}
+    {% if object.birth_date %}
        Birth Date: {{ object.birth_date }}<br>
+    {% else %}
+       Birth Date: Not Provided<br>
+    {% endif %}
        Email: {{ object.email }}<br>
-       Phone: {{ user.phone_number }}<br>
+    {% if user.phone_number %}
+       Birth Date: {{ user.phone_number }}<br>
+    {% else %}
+       Phone: Not Provided<br>
+    {% endif %}
+
     <br>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     {{ form.media }}

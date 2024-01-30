@@ -24,7 +24,7 @@ else:
     DATABASES = {
         "default_local": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": "ecargo",
+            "NAME": "I-Logis",
             "USER": "postgres",
             "PASSWORD": "admin",
             "HOST": "localhost",

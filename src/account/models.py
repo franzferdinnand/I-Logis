@@ -54,7 +54,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         return self.first_name
 
     def __str__(self):
-        return f"{self.phone_number}_{self.first_name}_{self.last_name}"
+        return f"{self.first_name} {self.last_name}"
 
 
 # class UserDriverProfile(models.Model):

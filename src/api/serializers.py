@@ -12,6 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class CargoSerializer(serializers.ModelSerializer):
+    owner = serializers.StringRelatedField(default=serializers.CurrentUserDefault(), read_only=True)
     class Meta:
         model = Cargo
         fields = ["id", "cargo_type", "weight_kg", "destination_from", "destination_to", "owner"]

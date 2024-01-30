@@ -20,7 +20,7 @@ router.register("customers", UserViewSet)
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="eCargo API",
+        title="I-Logis API",
         default_version="v1.0",
         description="API for using of cargo or drivers info",
         term_of_service="https://www.google.com/policies/terms/",

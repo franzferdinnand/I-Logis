@@ -36,6 +36,9 @@ class CargoCreateView(CreateAPIView):
     queryset = Cargo.objects.all()
     serializer_class = CargoSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 class CargoUpdateView(RetrieveUpdateAPIView):
     permission_classes = [AllowAny]

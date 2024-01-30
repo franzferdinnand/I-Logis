@@ -3,18 +3,18 @@ version: "3.2"
 services:
   backend:
     build: ./
-    container_name: ecargo_container
-    working_dir: /eCargo
+    container_name: I-Logis_container
+    working_dir: /I-Logis
     tty: True
     command:
       - ./commands/start_${MODE}_serv.sh
     ports:
       - 8010:8000
     volumes:
-      - ./src:/eCargo/src
+      - ./src:/I-Logis/src
       - ./commands:/commands
-      - static_content:/eCargo/static
-      - media_content:/eCargo/static/media
+      - static_content:/I-Logis/static
+      - media_content:/I-Logis/static/media
     env_file:
       - .env
     depends_on:
@@ -47,8 +47,8 @@ services:
     container_name: nginx_container
     image: nginx:1.19
     volumes:
-      - static_content:/eCargo/static
-      - media_content:/eCargo/static/media
+      - static_content:/I-Logis/static
+      - media_content:/I-Logis/static/media
       - ./nginx:/etc/nginx/conf.d
     ports:
       - 80:80
