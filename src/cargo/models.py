@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+from config.settings import dev
+
 
 class Cargo(models.Model):
     cargo_type = models.CharField(max_length=200, null=False)

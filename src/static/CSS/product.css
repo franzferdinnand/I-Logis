@@ -59,6 +59,9 @@
   background-color: #e5e5e5;
 }
 
+.back-img-1 {
+    background-image: url("cargo.jpg")
+}
 
 /*
  * Extra utilities

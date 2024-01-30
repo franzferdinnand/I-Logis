@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% load static %}
+
+<h1>{{ object.transport_profile }}</h1>
+<div>
+    <img src="/media/Transport.jpg" width="340" height="200">
+    <div class="text" >
+        <h4>{{ object.car_name }} {{ object.car_model }}</h4><br>
+        Capacity : {{ object.max_weight }} kg <br>
+        Owner : {{ object.owner }}<br>
+        Owner contact : {{ object.owner.phone_number }}<br>
+    </div>
+</div>
+
+
+{% endblock %}

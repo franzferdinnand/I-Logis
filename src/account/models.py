@@ -14,7 +14,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_("surname"), max_length=150)
     email = models.EmailField(_("email address"), max_length=100, unique=True)
     city = models.CharField(max_length=120, blank=True)
-    avatar = models.ImageField(default="default.png", upload_to="media/avatars")
+    avatar = models.ImageField(default="avatars/default.png", upload_to="media/avatars")
     birth_date = models.DateField(null=True)
     is_staff = models.BooleanField(
         _("staff status"),
@@ -54,7 +54,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         return self.first_name
 
     def __str__(self):
-        return f"{self.phone_number}_{self.first_name}_{self.last_name}"
+        return f"{self.first_name} {self.last_name}"
 
 
 # class UserDriverProfile(models.Model):

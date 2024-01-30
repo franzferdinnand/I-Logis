@@ -1,5 +1,5 @@
 
-name: eCargo_CI_CD
+name: I-Logis_CI_CD
 
 on:
   - push

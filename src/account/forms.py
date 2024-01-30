@@ -7,7 +7,7 @@ from django.forms import ModelForm
 class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = get_user_model()
-        fields = ["phone_number", "email", "first_name", "last_name", "password1", "password2"]
+        fields = ["phone_number", "email", "first_name", "last_name", "avatar", "password1", "password2"]
 
         def clean(self):
             _cleaned_data = super().clean()

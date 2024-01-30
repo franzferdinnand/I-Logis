@@ -1,3 +1,5 @@
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
@@ -7,6 +9,9 @@ from api.views import (CargoCreateView, CargoDeleteView, CargoDetailView,
                        CargoListView, CargoUpdateView, TransportCreateView,
                        TransportDeleteView, TransportDetailView,
                        TransportListView, TransportUpdateView, UserViewSet)
+from django.conf import settings
+
+from config.settings import dev
 from core.views import UserProfileView
 
 app_name = "api"
@@ -15,7 +20,7 @@ router.register("customers", UserViewSet)
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="eCargo API",
+        title="I-Logis API",
         default_version="v1.0",
         description="API for using of cargo or drivers info",
         term_of_service="https://www.google.com/policies/terms/",
@@ -39,5 +44,8 @@ urlpatterns = [
     path("create-cargo/", CargoCreateView.as_view(), name="create_cargo"),
     path("update-cargo/<int:id>/", CargoUpdateView.as_view(), name="update_cargo"),
     path("delete-cargo/<int:id>/", CargoDeleteView.as_view(), name="delete_cargo"),
-    path("profile/<int:pk>", UserProfileView.as_view(), name="user_profile"),
-]
+    path("api_profile/<int:pk>", UserProfileView.as_view(), name="api_profile"),
+] + static(dev.MEDIA_URL, document_root=dev.MEDIA_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()
+

@@ -1,9 +1,9 @@
 FROM python:3.10
 
 RUN apt update \
-&& mkdir /eCargo
+&& mkdir /I-Logis
 
-WORKDIR /eCargo
+WORKDIR /I-Logis
 
 COPY src ./src
 COPY commands ./commands

@@ -19,7 +19,7 @@ def send_registration_email(request, user_instance):
         },
     )
     email = EmailMessage(
-        subject="Activate Your eCargo account",
+        subject="Activate Your I-Logis account",
         body=message,
         to=[
             user_instance.email,

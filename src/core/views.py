@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView, TemplateView
 
+from account.models import UserAccount
+
 
 class IndexView(TemplateView):
     template_name = "index.html"
@@ -9,6 +11,6 @@ class IndexView(TemplateView):
 
 
 class UserProfileView(LoginRequiredMixin, DetailView):
-    template_name = "profile/user_profile.html"
-    model = get_user_model()
-    queryset = get_user_model().objects.all()
+    template_name = 'profile/user_profile.html'
+    model = UserAccount
+    queryset = UserAccount.objects.all()
